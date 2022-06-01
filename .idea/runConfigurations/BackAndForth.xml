@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="BackAndForth" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="z21Drive.testing.BackAndForth" />
+    <module name="z21-drive" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
