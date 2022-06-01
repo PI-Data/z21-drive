@@ -7,6 +7,8 @@ import java.net.InetAddress;
 import java.net.SocketException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.logging.Logger;
 
 import z21Drive.actions.Z21Action;
@@ -59,35 +61,19 @@ public class Z21 implements Runnable{
                 return new BroadcastTypes[]{BroadcastTypes.LAN_X_UNKNOWN_COMMAND};
             }
         });
-        keepAliveTimer = new Timer( 30000, new Runnable() {
+        TimerTask keepAliveTask = new TimerTask() {
             @Override
             public void run() {
                 sendActionToZ21( new Z21ActionGetSerialNumber() );
             }
-        } );
-        initKeepAliveTimer();
+        };
+        keepAliveTimer = new Timer( "Keep Alive timer", true);
+        keepAliveTimer.scheduleAtFixedRate( keepAliveTask, 100, 30000 );
         //Make sure z21 shuts down communication gracefully
         Runtime.getRuntime().addShutdownHook(new Thread(this::shutdown));
         Logger.getLogger("Z21 init").info("Z21 initialization done.");
     }
 
-    /**
-     *
-     * @param delay Delay for the KeepAliveTimer
-     */
-    public void setKeepAliveTimer(int delay) {
-    	keepAliveTimer.setInitialDelay(delay);
-        keepAliveTimer.setDelay(delay);
-        keepAliveTimer.restart();
-    }
-
-    private void initKeepAliveTimer(){
-        keepAliveTimer.setRepeats(true);
-        keepAliveTimer.start();
-    }
-
-    
-    
     /**
      * Used to send the packet to z21.
      * @param action Action to send.
@@ -173,7 +159,7 @@ public class Z21 implements Runnable{
     public void shutdown(){
         Logger.getLogger("Z21").info("Shutting down all communication.");
         sendActionToZ21(new Z21ActionLanLogoff());
-        keepAliveTimer.stop();
+        keepAliveTimer.cancel();
         exit = true;
         socket.close();
     }
