@@ -33,7 +33,7 @@ public class Z21 implements Runnable{
     private final String host;
 
     private Z21() {
-        this("192.168.188.2");
+        this("192.168.188.20");
     }
 
     private Z21(String host) {
