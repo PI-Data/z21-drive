@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
-    <file type="web" url="file:///local/home/mna/projects/PI-Rail/z21-drive" />
+    <file type="web" url="file://$PROJECT_DIR$/z21-drive" />
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="liberica-17" project-jdk-type="JavaSDK">
     <output url="file://$USER_HOME$/out" />
