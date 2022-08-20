@@ -1,22 +1,27 @@
 package z21Drive.actions;
 
+import z21Drive.Z21;
+
 import java.util.Arrays;
 
 /**
  * Used to switch track power off.
  */
-public class Z21ActionLanXTrackPowerOff extends Z21Action{
-    //Made a static one here for better performance.
-    private static final Byte[] rep = new Byte[]{0x07, 0x00, 0x40, 0x00, 0x21, (byte)0x80, (byte)0xA1};
+public class Z21ActionLanXTrackPowerOff extends Z21Action {
+  //Made a static one here for better performance.
+  private static final Byte[] rep = new Byte[]{0x07, 0x00, 0x40, 0x00, 0x21, (byte) 0x80, (byte) 0xA1};
 
-    public Z21ActionLanXTrackPowerOff() {
-        byteRepresentation = Arrays.asList(rep);
-    }
+  public Z21ActionLanXTrackPowerOff( Z21 z21 ) {
+    super( z21 );
+    byteRepresentation = Arrays.asList( rep );
+  }
 
-    /**
-     * Not necessary here.
-     * @param objs Null or whatever.
-     */
-    @Override
-    public void addDataToByteRepresentation(Object[] objs) {}
+  /**
+   * Not necessary here.
+   *
+   * @param objs Null or whatever.
+   */
+  @Override
+  public void addDataToByteRepresentation( Object[] objs ) {
+  }
 }

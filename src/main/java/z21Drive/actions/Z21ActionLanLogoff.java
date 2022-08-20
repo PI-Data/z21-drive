@@ -1,5 +1,7 @@
 package z21Drive.actions;
 
+import z21Drive.Z21;
+
 import java.util.Arrays;
 
 /**
@@ -8,18 +10,21 @@ import java.util.Arrays;
  * This client gets automatically removed from z21's list of clients after 30 seconds
  * of inactivity, so there is no real problem if this action is not sent.
  */
-public class Z21ActionLanLogoff extends Z21Action{
-    //Made a static one here for better performance.
-    private static Byte[] rep = new Byte[]{0x04, 0x00, 0x30, 0x00};
+public class Z21ActionLanLogoff extends Z21Action {
+  //Made a static one here for better performance.
+  private static Byte[] rep = new Byte[]{0x04, 0x00, 0x30, 0x00};
 
-    public Z21ActionLanLogoff(){
-        byteRepresentation = Arrays.asList(rep);
-    }
+  public Z21ActionLanLogoff( Z21 z21 ) {
+    super( z21 );
+    byteRepresentation = Arrays.asList( rep );
+  }
 
-    /**
-     * Unnecessary here.
-     * @param objs Make it null
-     */
-    @Override
-    public void addDataToByteRepresentation(Object[] objs) {}
+  /**
+   * Unnecessary here.
+   *
+   * @param objs Make it null
+   */
+  @Override
+  public void addDataToByteRepresentation( Object[] objs ) {
+  }
 }

@@ -1,9 +1,22 @@
 package z21Drive.actions;
 
+import z21Drive.Z21;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Z21Action {
+
+    private Z21 z21;
+
+    public Z21Action( Z21 z21 ) {
+        this.z21 = z21;
+    }
+
+    public Z21 getZ21() {
+        return z21;
+    }
+
     /**
      * Represents the message in z21 understandable form.
      */
