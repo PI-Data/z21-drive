@@ -38,7 +38,7 @@ public class FlashHeadLights implements Runnable {
   public void run() {
     Z21 z21 = null;
     try {
-      InetAddress z21address = InetAddress.getByName( "192.168.188.20" );
+      InetAddress z21address = InetAddress.getByName( "192.168.188.2" );
       z21 = new Z21( z21address );
       while (!exit) {
         try {

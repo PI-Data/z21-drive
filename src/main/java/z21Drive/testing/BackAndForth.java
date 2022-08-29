@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  */
 public class BackAndForth implements Runnable {
   public static final int LOCO_ADDRESS = 3;
-  public static final String z21Addr = "192.168.188.20";
+  public static final String z21Addr = "192.168.188.2";
   private boolean exit;
 
   public static void main( String[] yoMama ) {
