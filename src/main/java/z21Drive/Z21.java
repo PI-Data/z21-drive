@@ -79,6 +79,10 @@ public class Z21 implements Runnable {
     Logger.getLogger( "Z21 init" ).info( "Z21 initialization done." );
   }
 
+  public InetAddress getZ21Address() {
+    return z21Address;
+  }
+
   /**
    * Used to send the packet to z21.
    *
