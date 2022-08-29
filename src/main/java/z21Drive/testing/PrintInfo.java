@@ -39,7 +39,7 @@ public class PrintInfo implements Runnable {
           if (type == BroadcastTypes.LAN_X_LOCO_INFO) {
             Z21BroadcastLanXLocoInfo bc = (Z21BroadcastLanXLocoInfo) broadcast;
             System.out.println( "Loco address: " + bc.getLocoAddress() );
-            System.out.println( "Lights: " + bc.isF0On() );
+            System.out.println( "Lights: " + bc.getFunctionState(0) );
             System.out.println( "Speed steps: " + bc.getSpeedSteps() );
             System.out.println( "Direction: " + bc.getDirection() );
             System.out.println( "Speed: " + bc.getSpeed() );
