@@ -35,6 +35,12 @@ public class Z21 implements Runnable {
 
   private InetAddress z21Address;
 
+  public static boolean isActive() {
+    synchronized (staticSync) {
+      return (socket != null);
+    }
+  }
+
   public Z21( InetAddress z21Address ) {
     this.z21Address = z21Address;
     synchronized (staticSync) {
