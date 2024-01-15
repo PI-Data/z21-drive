@@ -6,6 +6,7 @@ package z21Drive.broadcasts;
  */
 public class Z21BroadcastLanXLocoInfo extends Z21Broadcast{
     public static final int FUNCTION_COUNT = 29;
+
     private int locoAddress;
     private boolean locoInUse;
     private int speedSteps;
