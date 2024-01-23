@@ -15,14 +15,15 @@ import java.util.logging.Logger;
  * @see z21Drive.actions.Z21ActionSetLocoFunction
  */
 public class FlashHeadLights implements Runnable {
-  public static final int LOCO_ADDRESS = 3;
+  int locoAdress;
   private boolean exit;
 
   public static void main( String[] args ) {
-    new Thread( new FlashHeadLights() ).start();
+    new Thread( new FlashHeadLights( Integer.parseInt( args[0] ) ) ).start();
   }
 
-  private FlashHeadLights() {
+  private FlashHeadLights(int locoAdress) {
+    this.locoAdress = locoAdress;
     new Thread( () -> {
       try {
         Thread.sleep( 30000 );
@@ -43,10 +44,10 @@ public class FlashHeadLights implements Runnable {
       while (!exit) {
         try {
           Logger.getLogger( "FlashHeadLights" ).info( "Headlight on." );
-          z21.sendActionToZ21( new Z21ActionSetLocoFunction( z21, LOCO_ADDRESS, 0, true ) );
+          z21.sendActionToZ21( new Z21ActionSetLocoFunction( z21, locoAdress, 0, true ) );
           Thread.sleep( 2000 );
           Logger.getLogger( "FlashHeadLights" ).info( "Headlight off." );
-          z21.sendActionToZ21( new Z21ActionSetLocoFunction( z21, LOCO_ADDRESS, 0, false ) );
+          z21.sendActionToZ21( new Z21ActionSetLocoFunction( z21, locoAdress, 0, false ) );
           Thread.sleep( 2000 );
         }
         catch (LocoAddressOutOfRangeException e) {
