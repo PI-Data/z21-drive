@@ -15,16 +15,16 @@ import java.net.InetAddress;
  *
  * @see z21Drive.Z21
  */
-public class PrintInfo implements Runnable {
+public class PrintLocoInfo implements Runnable {
   boolean finished;
   int locoAdress;
 
   public static void main( String[] args ) {
     //Start things up
-    new Thread( new PrintInfo( Integer.parseInt( args[0] ) ) ).start();
+    new Thread( new PrintLocoInfo( Integer.parseInt( args[0] ) ) ).start();
   }
 
-  public PrintInfo( int locoAdress ) {
+  public PrintLocoInfo( int locoAdress ) {
     this.locoAdress = locoAdress;
   }
 
