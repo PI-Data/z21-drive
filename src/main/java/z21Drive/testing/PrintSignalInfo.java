@@ -50,7 +50,9 @@ public class PrintSignalInfo implements Runnable {
             System.out.print( "\n" );
             System.out.println( "Data byte:" );
             System.out.println( bc.getByteRepresentation()[7] );
-            finished = true;
+            if (bc.getSignalAddress() > signalAdress) {
+              finished = true;
+            }
           } else {
             System.out.println("BroadcastType: " + type.name());
           }
@@ -64,6 +66,8 @@ public class PrintSignalInfo implements Runnable {
 
       try {
         z21.sendActionToZ21( new Z21ActionGetSignalInfo( z21, signalAdress ) );
+        Thread.sleep(1000);
+        z21.sendActionToZ21( new Z21ActionGetSignalInfo( z21, signalAdress + 1 ) );
       }
       catch (LocoAddressOutOfRangeException e) {
         e.printStackTrace();
