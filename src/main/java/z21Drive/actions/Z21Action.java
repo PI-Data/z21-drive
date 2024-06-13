@@ -7,14 +7,37 @@ import java.util.List;
 
 public abstract class Z21Action {
 
+    public static final char [] hexdigits = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
+
     private Z21 z21;
 
-    public Z21Action( Z21 z21 ) {
+    public Z21Action(final Z21 z21 ) {
         this.z21 = z21;
     }
 
     public Z21 getZ21() {
         return z21;
+    }
+
+    public String hexdump() {
+        final StringBuilder bld = new StringBuilder();
+        for (final Byte b : byteRepresentation) {
+            final int v = (b + 256) % 256; // convert to unsigned
+            toHex(bld, v);
+        }
+        return bld.toString();
+    }
+
+    public static void toHex(final StringBuilder bld, final int value) {
+        bld.append(' ');
+        bld.append(hexdigits[value / 16]);
+        bld.append(hexdigits[value % 16]);
+    }
+
+    public static String toHex(final int value) {
+        final StringBuilder bld = new StringBuilder();
+        toHex(bld, value);
+        return bld.toString();
     }
 
     /**
