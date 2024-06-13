@@ -244,6 +244,8 @@ class PacketConverter {
 
     if (header1 == 0x40 && header2 == 0x00 && xHeader == 239)
       return new Z21BroadcastLanXLocoInfo( newArray );
+    else if (header1 == 0x40 && header2 == 0x00 && xHeader == 0x43)
+      return new Z21BroadcastLanXSignalInfo( newArray );
     else if (header1 == 0x40 && header2 == 0x00 && xHeader == 0x61 && (data[5] & 255) == 0x82)
       return new Z21BroadcastLanXUnknownCommand( newArray );
     else if (header1 == 0x40 && header2 == 0x00 && xHeader == 0x61 && (data[5] & 255) == 0x00)
